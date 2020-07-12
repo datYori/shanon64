@@ -2,6 +2,7 @@
 
 import math
 import base64
+import matplotlib.pyplot as plt 
 
 def s_range(s): return (ord(c) for c in set(s))
 
@@ -20,7 +21,21 @@ def encodeXtimes(x, s):
     for i in range(x):
         out = base64.b64encode(out)
     return out.decode('ascii')
-base = '7&wS/p('
-for i in range(20):
+
+
+
+base = 'complexmdpdfkgr'
+xaxes = []
+yaxes = []
+for i in range(50):
+    xaxes.append(i)
     subject = encodeXtimes(x=i, s=base)
-    print('{} -- {}'.format(subject, stringH(subject)))
+    h = stringH(subject)
+    yaxes.append(h)
+
+print(xaxes)
+print(yaxes)
+plt.plot(xaxes, yaxes)
+
+plt.savefig('res.png')
+plt.show()
